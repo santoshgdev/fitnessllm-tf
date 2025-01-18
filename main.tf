@@ -6,3 +6,10 @@ provider "google" {
   region = "us-west1"
   zone = "us-west1-a"
 }
+
+terraform {
+  backend "gcs" {
+    bucket  = "sg-terraform-state"
+    prefix = "fitnessllm/state"
+  }
+}
