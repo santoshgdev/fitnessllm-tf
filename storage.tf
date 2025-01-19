@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "gcs-fitnessllm" {
-  name = nonsensitive(local.dev_infra.strava_bucket)
+  name = nonsensitive(local.dev_infra.bronze_bucket)
   location = "US"
   force_destroy = true
   storage_class = "STANDARD"
