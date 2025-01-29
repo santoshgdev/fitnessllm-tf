@@ -1,0 +1,26 @@
+[
+  {
+    "name": "original_size",
+    "type": "INTEGER",
+    "mode": "NULLABLE",
+    "description": "The number of data points in this stream"
+  },
+  {
+    "name": "resolution",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "The level of detail (sampling) in which this stream was returned. May take one of the following values: low, medium, high"
+  },
+  {
+    "name": "series_type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "The base series used in the case the stream was downsampled. May take one of the following values: distance, time"
+  },
+  {
+    "name": "data",
+    "type": "FLOAT",
+    "mode": "REPEATED",
+    "description": "The sequence of velocity values for this stream, in meters per second"
+  }
+]

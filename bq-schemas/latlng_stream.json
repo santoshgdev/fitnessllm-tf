@@ -1,0 +1,40 @@
+[
+  {
+    "name": "athlete_id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "athlete_id"
+  },
+  {
+    "name": "activity_id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "activity_id"
+  },
+  {
+    "name": "time",
+    "type": "INTEGER",
+    "mode": "REQUIRED",
+    "description": "From time stream"
+  },
+  {
+    "name": "data",
+    "type": "RECORD",
+    "mode": "REPEATED",
+    "description": "The sequence of lat/long values for this stream",
+    "fields": [
+      {
+        "name": "latitude",
+        "type": "FLOAT",
+        "mode": "NULLABLE",
+        "description": "The latitude value"
+      },
+      {
+        "name": "longitude",
+        "type": "FLOAT",
+        "mode": "NULLABLE",
+        "description": "The longitude value"
+      }
+    ]
+  }
+]
