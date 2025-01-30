@@ -1,0 +1,38 @@
+[
+  {
+    "name": "athlete_id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "athlete_id"
+  },
+  {
+    "name": "activity_id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "activity_id"
+  },
+  {
+    "name": "data_source",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Datasource (e.g. Strava)"
+  },
+  {
+    "name": "stream",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Stream type"
+  },
+  {
+    "name": "record_count",
+    "type": "INT",
+    "mode": "REQUIRED",
+    "description": "Number of records"
+  },
+  {
+    "name": "bq_insert_timestamp",
+    "type": "INT",
+    "mode": "REQUIRED",
+    "description": "Number of records"
+  }
+]
