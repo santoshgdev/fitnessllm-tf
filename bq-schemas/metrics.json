@@ -18,20 +18,20 @@
     "description": "Datasource (e.g. Strava)"
   },
   {
-    "name": "stream",
+    "name": "data_stream",
     "type": "STRING",
     "mode": "REQUIRED",
     "description": "Stream type"
   },
   {
     "name": "record_count",
-    "type": "INT",
+    "type": "INTEGER",
     "mode": "REQUIRED",
     "description": "Number of records"
   },
   {
     "name": "bq_insert_timestamp",
-    "type": "INT",
+    "type": "INTEGER",
     "mode": "REQUIRED",
     "description": "Number of records"
   }
