@@ -30,6 +30,12 @@
     "description": "Number of records"
   },
   {
+    "name": "status",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Record status"
+  },
+  {
     "name": "bq_insert_timestamp",
     "type": "INTEGER",
     "mode": "REQUIRED",
