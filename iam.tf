@@ -8,10 +8,11 @@ resource "google_project_iam_member" "bigquery" {
   project = "${var.project}"
 
   for_each = toset([
-    "roles/bigquery.dataEditor",    # Read/write tables/datasets
-    "roles/bigquery.jobUser",       # Run queries/jobs
-    "roles/storage.objectAdmin",  # Read/write objects
-    "roles/secretmanager.secretAccessor"  # Read secrets only
+    "roles/bigquery.dataEditor",
+    "roles/bigquery.jobUser",
+    "roles/bigquery.readSessionUser",
+    "roles/storage.objectAdmin",
+    "roles/secretmanager.secretAccessor",
   ])
 
   role    = each.value
