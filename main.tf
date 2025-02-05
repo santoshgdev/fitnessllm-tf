@@ -1,6 +1,7 @@
 #These variables are set via TF_VAR_* environmental variables
 variable "credentials_path" {} # PATH TO CREDENTIALS PATH
 variable "project" {} # PROJECT_NAME
+variable "code_path" {}
 
 provider "google" {
   credentials = file("${var.credentials_path}")
