@@ -37,7 +37,7 @@
   },
   {
     "name": "bq_insert_timestamp",
-    "type": "INTEGER",
+    "type": "TIMESTAMP",
     "mode": "REQUIRED",
     "description": "Number of records"
   }
