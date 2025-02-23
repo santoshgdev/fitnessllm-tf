@@ -1,0 +1,33 @@
+repos:
+- repo: https://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.83.5
+  hooks:
+    - id: terraform_fmt
+      args:
+        - --args=-recursive
+        - --args=-diff
+        - --args=-write=true
+    - id: terraform_docs
+      args:
+        - --args=--sort-by-required
+    - id: terraform_tflint
+      args:
+        - --args=--call-module-type=all
+    - id: terraform_validate
+      args:
+        - --args=-json
+        - --args=-no-color
+    - id: terragrunt_fmt
+    - id: terraform_checkov
+      args:
+        - --args=--quiet
+        #- --args=--skip-check CKV_AWS_115,CKV_AWS_116,CKV_AWS_117
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+  hooks:
+    - id: check-merge-conflict
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+    - id: check-yaml
+    - id: check-added-large-files
