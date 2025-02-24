@@ -11,6 +11,7 @@ plan:
 	cd environments/$(env) && terragrunt plan
 
 apply:
+	make init env=$(env)
 	cd environments/$(env) && terragrunt apply -auto-approve
 
 destroy:
