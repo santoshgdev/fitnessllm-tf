@@ -35,6 +35,10 @@ resource "google_project_iam_member" "dataplatform_sa_custom_role" {
 }
 
 
+
+
+
+
 # # Attach a list of pre-existing roles to the service account
 # variable "roles" {
 #   type    = list(string)
