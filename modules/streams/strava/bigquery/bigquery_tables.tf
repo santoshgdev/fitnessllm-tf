@@ -155,7 +155,7 @@ resource "google_bigquery_table" "strava_moving_stream" {
   dataset_id          = google_bigquery_dataset.bronze_strava.dataset_id
   table_id            = "moving"
   description         = "Strava Moving Stream"
-  schema              = file("${var.code}/fitnessllm-dataplatform/fitnessllm_dataplatform/stream/strava/schemas/latlng.json")
+  schema              = file("${var.code}/fitnessllm-dataplatform/fitnessllm_dataplatform/stream/strava/schemas/generic_stream.json")
   deletion_protection = var.environment == "dev" ? false : true
   clustering          = ["athlete_id", "activity_id"]
   table_constraints {
