@@ -34,7 +34,7 @@ reset:
 	make apply
 
 repomix:
-	repomix --include "**/*.tf,**/*.tfvars"
+	repomix --include "**/*.tf,**/*.tfvars,**/*.hcl"
 
 lint:
 	pre-commit run --all-files

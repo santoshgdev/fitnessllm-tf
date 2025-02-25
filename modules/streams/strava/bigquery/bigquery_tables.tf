@@ -31,7 +31,20 @@ resource "google_bigquery_table" "strava_athlete_summary" {
     primary_key {
       columns = ["athlete_id"] # Composite primary key
     }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
   }
+  depends_on = [google_bigquery_dataset.bronze_strava, google_bigquery_table.strava_activity]
 
   labels = {
     environment = var.environment
@@ -52,6 +65,42 @@ resource "google_bigquery_table" "strava_altitude_stream" {
   table_constraints {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
+    }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
     }
   }
 
@@ -75,6 +124,42 @@ resource "google_bigquery_table" "strava_cadence_stream" {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
     }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
+    }
   }
 
   labels = {
@@ -97,6 +182,42 @@ resource "google_bigquery_table" "strava_distance_stream" {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
     }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
+    }
   }
 
   labels = {
@@ -117,6 +238,42 @@ resource "google_bigquery_table" "strava_heartrate_stream" {
   table_constraints {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
+    }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
     }
   }
 
@@ -140,6 +297,42 @@ resource "google_bigquery_table" "strava_latlng_stream" {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
     }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
+    }
   }
 
   labels = {
@@ -161,6 +354,42 @@ resource "google_bigquery_table" "strava_moving_stream" {
   table_constraints {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
+    }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
     }
   }
 
@@ -185,6 +414,42 @@ resource "google_bigquery_table" "strava_power_stream" {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
     }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
+    }
   }
 
   labels = {
@@ -207,6 +472,42 @@ resource "google_bigquery_table" "strava_grade_smooth_stream" {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
     }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
+    }
   }
 
   labels = {
@@ -228,6 +529,42 @@ resource "google_bigquery_table" "strava_time_stream" {
   table_constraints {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
+    }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
     }
   }
 
@@ -252,6 +589,42 @@ resource "google_bigquery_table" "strava_velocity_smooth_stream" {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
     }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
+    }
   }
 
   labels = {
@@ -274,6 +647,42 @@ resource "google_bigquery_table" "strava_temp_stream" {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
     }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
+    }
   }
 
   labels = {
@@ -295,6 +704,42 @@ resource "google_bigquery_table" "strava_watts_stream" {
   table_constraints {
     primary_key {
       columns = ["athlete_id", "activity_id", "index"] # Composite primary key
+    }
+    foreign_keys {
+      name = "fk_athlete_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_athlete_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "athlete_id"
+        referencing_column = "athlete_id"
+      }
+    }
+    foreign_keys {
+      name = "fk_activity_summary_activity_id"
+      referenced_table {
+        project_id = var.project
+        dataset_id = google_bigquery_dataset.bronze_strava.dataset_id
+        table_id   = google_bigquery_table.strava_activity.table_id
+      }
+      column_references {
+        referenced_column  = "activity_id"
+        referencing_column = "activity_id"
+      }
     }
   }
 
