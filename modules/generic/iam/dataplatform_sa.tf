@@ -33,23 +33,3 @@ resource "google_project_iam_member" "dataplatform_sa_custom_role" {
   role    = google_project_iam_custom_role.dataplatform_custom_role.name
   member  = "serviceAccount:${google_service_account.dataplatform_sa.email}"
 }
-
-
-
-
-
-
-# # Attach a list of pre-existing roles to the service account
-# variable "roles" {
-#   type    = list(string)
-#   default = [
-#     "roles/secretmanager.secretAccessor"
-#   ]
-# }
-# resource "google_project_iam_member" "dataplatform_sa_roles" {
-#   for_each = toset(var.roles)
-#
-#   project = var.project
-#   role    = each.value
-#   member  = "serviceAccount:${google_service_account.dataplatform_sa.email}"
-# }
