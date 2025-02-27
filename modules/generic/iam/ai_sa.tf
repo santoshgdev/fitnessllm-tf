@@ -11,9 +11,10 @@ resource "google_project_iam_custom_role" "llm_custom_role" {
   description = "A custom role with fine-grained permissions for the LLM service account."
 
   permissions = [
-    "bigquery.tables.list",
+    "bigquery.jobs.create",
+    "bigquery.tables.getData",
     "bigquery.tables.get",
-    "bigquery.jobs.create"
+    "bigquery.tables.list",
   ]
 }
 
