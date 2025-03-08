@@ -41,6 +41,13 @@ generate "combined_modules" {
       region = var.region
     }
 
+    module "generic_gcs" {
+      source = "${get_parent_terragrunt_dir()}//modules/generic/gcs"
+      location = var.location
+      environment = var.environment
+      project = var.project
+    }
+
     module "strava_bigquery" {
       source = "${get_parent_terragrunt_dir()}//modules/streams/strava/bigquery"
       environment = var.environment
