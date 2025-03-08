@@ -7,7 +7,7 @@ resource "google_storage_bucket" "gcs-fitnessllm-storage-generic" {
 
   labels = {
     environment = var.environment
-    project     = var.project
+    project = var.project
   }
 
 }

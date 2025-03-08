@@ -24,6 +24,11 @@ generate "combined_modules" {
       backend "gcs" {}
     }
 
+    module "generic_apis" {
+      source = "${get_parent_terragrunt_dir()}//modules/generic/apis"
+      project     = var.project
+    }
+
     module "generic_bigquery" {
       source = "${get_parent_terragrunt_dir()}//modules/generic/bigquery"
       environment = var.environment
@@ -39,6 +44,12 @@ generate "combined_modules" {
     module "generic_containerization" {
       source = "${get_parent_terragrunt_dir()}//modules/generic/containerization"
       region = var.region
+    }
+
+    module "generic_firebase" {
+      source = "${get_parent_terragrunt_dir()}//modules/generic/firebase"
+      project = var.project
+      environment = var.environment
     }
 
     module "generic_gcs" {
