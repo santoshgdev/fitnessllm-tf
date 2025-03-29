@@ -23,7 +23,8 @@ resource "google_project_iam_custom_role" "dataplatform_custom_role" {
     "bigquery.tables.updateData",
     "bigquery.tables.create",
     "bigquery.readsessions.create",
-    "bigquery.readsessions.getData"
+    "bigquery.readsessions.getData",
+    "datastore.entities.get"
   ]
 }
 
