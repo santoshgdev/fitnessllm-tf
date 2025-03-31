@@ -6,13 +6,13 @@ resource "google_service_account" "github_actions" {
 
 resource "google_project_iam_member" "service_account_token_creator" {
   project = var.project
-  role    = "roles/iam.serviceAccountTokenCreator " # Required for createOnPush
+  role    = "roles/iam.serviceAccountTokenCreator" # Required for createOnPush
   member  = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
 resource "google_project_iam_member" "service_account_user" {
   project = var.project
-  role    = "roles/iam.serviceAccountUserr " # Required for createOnPush
+  role    = "roles/iam.serviceAccountUser" # Required for createOnPush
   member  = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
