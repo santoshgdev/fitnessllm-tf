@@ -24,6 +24,15 @@ generate "combined_modules" {
       backend "gcs" {}
     }
 
+    module "generic_compute" {
+      source = "${get_parent_terragrunt_dir()}//modules/generic/compute"
+      project     = var.project
+      environment = var.environment
+      ENCRYPTION_SECRET = var.ENCRYPTION_SECRET
+      STRAVA_SECRET = var.STRAVA_SECRET
+      gcs-fitnessllm-storage-cf = module.generic_gcs.gcs-fitnessllm-storage-cf
+    }
+
     module "generic_apis" {
       source = "${get_parent_terragrunt_dir()}//modules/generic/apis"
       project     = var.project
@@ -82,6 +91,8 @@ generate "combined_modules" {
     variable "code" {}
     variable "project" {}
     variable "environment" {}
+    variable "ENCRYPTION_SECRET" {}
+    variable "STRAVA_SECRET" {}
 EOF
 }
 
@@ -94,4 +105,6 @@ inputs = {
   environment   = "dev"
   project       = coalesce(get_env("TF_VAR_project", ""), "default-project")
   location      = "us-west1"
+  STRAVA_SECRET = get_env("TF_VAR_STRAVA_SECRET", "")
+  ENCRYPTION_SECRET = get_env("TF_VAR_ENCRYPTION_SECRET", "")
 }
