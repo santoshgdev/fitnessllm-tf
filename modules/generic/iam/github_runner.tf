@@ -4,18 +4,6 @@ resource "google_service_account" "github_actions" {
   description  = "Service account for GitHub Actions to push Docker images to GCR"
 }
 
-resource "google_project_iam_member" "run_invoker" {
-  project = var.project
-  role    = "roles/run.invoker" # Required for createOnPush
-  member  = "serviceAccount:${google_service_account.github_actions.email}"
-}
-
-resource "google_project_iam_member" "run_admin" {
-  project = var.project
-  role    = "roles/run.admin" # Required for createOnPush
-  member  = "serviceAccount:${google_service_account.github_actions.email}"
-}
-
 resource "google_project_iam_member" "service_account_token_creator" {
   project = var.project
   role    = "roles/iam.serviceAccountTokenCreator" # Required for createOnPush
