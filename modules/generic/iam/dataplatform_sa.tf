@@ -34,3 +34,15 @@ resource "google_project_iam_member" "dataplatform_sa_custom_role" {
   role    = google_project_iam_custom_role.dataplatform_custom_role.name
   member  = "serviceAccount:${google_service_account.dataplatform_sa.email}"
 }
+
+resource "google_project_iam_member" "dataplatform_sa_run_invoker" {
+  project = var.project
+  role    = "roles/run.invoker" # Required for createOnPush
+  member  = "serviceAccount:${google_service_account.dataplatform_sa.email}"
+}
+
+resource "google_project_iam_member" "dataplatform_sa_secret_accessor" {
+  project = var.project
+  role    = "roles/secretmanager.secretAccessor" # Required for createOnPush
+  member  = "serviceAccount:${google_service_account.dataplatform_sa.email}"
+}
