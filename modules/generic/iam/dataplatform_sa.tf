@@ -24,7 +24,7 @@ resource "google_project_iam_custom_role" "dataplatform_custom_role" {
     "bigquery.tables.create",
     "bigquery.readsessions.create",
     "bigquery.readsessions.getData",
-    "datastore.entities.get"
+    "datastore.entities.get",
   ]
 }
 
@@ -44,5 +44,17 @@ resource "google_project_iam_member" "dataplatform_sa_run_invoker" {
 resource "google_project_iam_member" "dataplatform_sa_secret_accessor" {
   project = var.project
   role    = "roles/secretmanager.secretAccessor" # Required for createOnPush
+  member  = "serviceAccount:${google_service_account.dataplatform_sa.email}"
+}
+
+resource "google_project_iam_member" "dataplatform_sa_datastore_user" {
+  project = var.project
+  role    = "roles/datastore.user" # Required for createOnPush
+  member  = "serviceAccount:${google_service_account.dataplatform_sa.email}"
+}
+
+resource "google_project_iam_member" "dataplatform_sa_storage_admin" {
+  project = var.project
+  role    = "roles/storage.admin"
   member  = "serviceAccount:${google_service_account.dataplatform_sa.email}"
 }

@@ -6,43 +6,49 @@ resource "google_service_account" "github_actions" {
 
 resource "google_project_iam_member" "run_invoker" {
   project = var.project
-  role    = "roles/run.invoker" # Required for createOnPush
+  role    = "roles/run.invoker"
   member  = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
 resource "google_project_iam_member" "run_admin" {
   project = var.project
-  role    = "roles/run.admin" # Required for createOnPush
+  role    = "roles/run.admin"
   member  = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
 resource "google_project_iam_member" "service_account_token_creator" {
   project = var.project
-  role    = "roles/iam.serviceAccountTokenCreator" # Required for createOnPush
+  role    = "roles/iam.serviceAccountTokenCreator"
   member  = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
 resource "google_project_iam_member" "service_account_user" {
   project = var.project
-  role    = "roles/iam.serviceAccountUser" # Required for createOnPush
+  role    = "roles/iam.serviceAccountUser"
   member  = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
 resource "google_project_iam_member" "cloud_builder" {
   project = var.project
-  role    = "roles/cloudbuild.builds.builder" # Required for createOnPush
+  role    = "roles/cloudbuild.builds.builder"
   member  = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
 resource "google_project_iam_member" "cloud_function_developer" {
   project = var.project
-  role    = "roles/cloudfunctions.developer" # Required for createOnPush
+  role    = "roles/cloudfunctions.developer"
   member  = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
 resource "google_project_iam_member" "artifact_registry_create" {
   project = var.project
   role    = "roles/artifactregistry.repoAdmin" # Required for createOnPush
+  member  = "serviceAccount:${google_service_account.github_actions.email}"
+}
+
+resource "google_project_iam_member" "workflows_editor" {
+  project = var.project
+  role    = "roles/workflows.editor"
   member  = "serviceAccount:${google_service_account.github_actions.email}"
 }
 
