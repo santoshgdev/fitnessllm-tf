@@ -25,6 +25,8 @@ resource "google_project_iam_custom_role" "dataplatform_custom_role" {
     "bigquery.readsessions.create",
     "bigquery.readsessions.getData",
     "datastore.entities.get",
+    "cloudfunctions.functions.get",
+    "run.services.get"
   ]
 }
 

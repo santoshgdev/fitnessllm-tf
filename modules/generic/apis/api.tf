@@ -1,5 +1,5 @@
 resource "google_project_service" "apis" {
-  project  = var.project
+  project = var.project
   for_each = toset([
     "cloudbilling.googleapis.com",
     "cloudresourcemanager.googleapis.com",
